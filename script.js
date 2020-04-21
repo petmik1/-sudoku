@@ -1,21 +1,39 @@
 console.log('hello world')
 var rad1rute1 = document.getElementById('rad1rute1');
 var button = document.getElementById('button')
-button.onsubmit = function (event) {
+button.onsubmit = function(event) {
   event.preventdefault();
   console.log(rad1rute1.value);
 
 }
+document.write('<table border=1px;>')
+for (var x = 1; i >= 9; i++) {
+  document.write('<tr>')
+  for (var y = 1; i >= 9; i++) {
+    document.write('<td><input type="number"></td>')
+  }
+}
 
-puzzle = [[0,0,0,0,0,0,0,0,0],
-          [0,0,0,0,0,0,0,0,0],
-          [0,0,0,0,0,0,0,0,0],
-          [0,0,0,0,0,0,0,0,0],
-          [0,0,0,0,0,0,0,0,0],
-          [0,0,0,0,0,0,0,0,0],
-          [0,0,0,0,0,0,0,0,0],
-          [0,0,0,0,0,0,0,0,0],
-          [0,0,0,0,0,0,0,0,0]]
+document.write('</tr>')
+document.write('</table>')
+
+puzzle = [
+  [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0]
+]
+
+function tableCreate() {
+  
+
+}
+tableCreate();
 // https://www.valentinog.com/blog/html-table/
 
 
