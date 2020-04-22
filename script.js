@@ -1,3 +1,4 @@
+document.write("<form>")
 document.write("<table border='1px' class='table align='center'>");
 
 for (x = 1; x < 10; x++) {
@@ -13,8 +14,11 @@ for (x = 1; x < 10; x++) {
 }
 
 document.write("</table>");
+document.write("</form>")
 
+function myfunction() {
 
+}
 
 
 

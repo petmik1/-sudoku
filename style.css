@@ -37,3 +37,9 @@ td {
 .inptbl {
   align: center;
 }
+
+#btn {
+  position: relative;
+  top: 500px;
+  left: auto;
+}
