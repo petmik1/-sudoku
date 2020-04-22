@@ -17,12 +17,6 @@
  main {
    text-align: center;
 }
-td{
-  border-style: solid;
-  border-color: black;
-  padding: 25px;
-
-}
-table{
-  padding: 5px;
+.table{
+  width: 5px; 
 }
