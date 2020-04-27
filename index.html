@@ -1,20 +1,18 @@
 <!DOCTYPE html>
-<html lang="no" dir="ltr">
+<html lang="no">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
+    <title>sudoku-løser</title>
     <link rel="stylesheet" href="style.css" />
-    <title></title>
   </head>
-
   <body>
-    <script src="script.js" charset="utf-8"></script>
     <!-- iPad -->
     <div id="iPad">
       <svg id="iPadknapp" width="50px" height="50px">
         <circle
           cx="25"
           cy="25"
-          rx="25"
+          r="25"
           stroke="grey"
           stroke-width="3"
           fill="black"
@@ -22,12 +20,34 @@
       </svg>
       <!-- Innhold i app -->
       <main>
-        <center>
-          <h1>sudoku løseren</h1>
+        <h1>Suduko-løser</h1>
+        <p>Registrer en og en rad fra toppen og nedover</p>
 
-          <button type="button" id="btn" onclick="myfuntion()">sjekk</button>
+        <form id="regRad">
+          <input type="number" id="inpTall1" min="1" max="9" />
+          <input type="number" id="inpTall2" min="1" max="9" />
+          <input type="number" id="inpTall3" min="1" max="9" />
+          <input type="number" id="inpTall4" min="1" max="9" />
+          <input type="number" id="inpTall5" min="1" max="9" />
+          <input type="number" id="inpTall6" min="1" max="9" />
+          <input type="number" id="inpTall7" min="1" max="9" />
+          <input type="number" id="inpTall8" min="1" max="9" />
+          <input type="number" id="inpTall9" min="1" max="9" />
+          <br />
+          <br />
+          <button type="submit">Registrer rad</button>
+        </form>
+
+        <center>
+          <table>
+            <tbody id="tblTall"></tbody>
+          </table>
         </center>
+
+        <button>Løs</button>
       </main>
     </div>
   </body>
+
+  <script src="script.js"></script>
 </html>
