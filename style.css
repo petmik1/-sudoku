@@ -20,6 +20,13 @@ main {
 
 input {
   width: 30px;
+  height: 20px;
+  transition: width 1s;
+}
+input:hover {
+  width: 60px;
+  height: 40px;
+  font-size: 30px;
 }
 
 table {
@@ -29,7 +36,6 @@ table {
   width: 490px;
 }
 
-table,
 td {
   border: 1px solid black;
 }

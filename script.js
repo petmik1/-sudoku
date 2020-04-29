@@ -25,6 +25,7 @@ class Rad {
     this.tall8 = tall8;
     this.tall9 = tall9;
   }
+
   get tabellrad() {
     var rad = `<tr>
                 <td>${this.tall1}</td>
@@ -78,3 +79,4 @@ regRad.onsubmit = function (evt) {
     visTall();
   }
 };
+console.log(Rad);
