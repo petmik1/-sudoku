@@ -42,6 +42,7 @@ class Rad {
   }
 }
 
+var tall = [];
 //lage en class for rad, en for kolonne og en for rute, og så lage en class for sudoku som bruker disse
 
 function visTall() {
@@ -78,5 +79,16 @@ regRad.onsubmit = function (evt) {
     arrTall.push(nyRad);
     visTall();
   }
+  tall.push([
+    inpTall1.value,
+    inpTall2.value,
+    inpTall3.value,
+    inpTall4.value,
+    inpTall5.value,
+    inpTall6.value,
+    inpTall7.value,
+    inpTall8.value,
+    inpTall9.value,
+  ]);
 };
 console.log(Rad);
