@@ -80,15 +80,74 @@ regRad.onsubmit = function (evt) {
     visTall();
   }
   tall.push([
-    inpTall1.value,
-    inpTall2.value,
-    inpTall3.value,
-    inpTall4.value,
-    inpTall5.value,
-    inpTall6.value,
-    inpTall7.value,
-    inpTall8.value,
-    inpTall9.value,
+    Number(inpTall1.value),
+    Number(inpTall2.value),
+    Number(inpTall3.value),
+    Number(inpTall4.value),
+    Number(inpTall5.value),
+    Number(inpTall6.value),
+    Number(inpTall7.value),
+    Number(inpTall8.value),
+    Number(inpTall9.value),
   ]);
 };
 console.log(Rad);
+
+var ikkeMulige = {};
+
+function sudokuLøser(sudoku) {
+  //test
+  var sudoku = [
+    [5, 3, 0, 0, 7, 0, 0, 0, 0],
+    [6, 0, 0, 1, 9, 5, 0, 0, 0],
+    [0, 9, 8, 0, 0, 0, 0, 6, 0],
+    [8, 0, 0, 0, 6, 0, 0, 0, 3],
+    [4, 0, 0, 8, 0, 3, 0, 0, 1],
+    [7, 0, 0, 0, 2, 0, 0, 0, 6],
+    [0, 6, 0, 0, 0, 0, 2, 8, 0],
+    [0, 0, 0, 4, 1, 9, 0, 0, 5],
+    [0, 0, 0, 0, 8, 0, 0, 7, 9],
+  ];
+
+  for (var vert = 0; vert < sudoku.length; vert++) {
+    for (var hori = 0; hori < sudoku.length; hori++) {
+      //dobbel for-løkke som traverserer hele sudoku-arrayet
+      if (sudoku[vert][hori] === 0) {
+        //hvis den finner en 0, skal den sjekke raden, kolonnen og boksen for det tallet
+        ikkeMulige = {};
+        for (var i = 0; i < 9; i++) {
+          if (sudoku[vert][i] > 0) {
+            //sjekker raden
+            ikkeMulige[sudoku[vert][hori]] = true; //hvis den finner et tall i raden skal det legges til som true i ikkeMulige
+          }
+          if (sudoku[i][hori] > 0) {
+            //sjekker kolonnen
+            ikkeMulige[sudoku[i][hori]] = true; //hvis den finner et tall i kolonnen skal det legges til som true i ikkeMulige
+          }
+        }
+        //sjekker så boksen
+        for (
+          var vertBox = Math.floor(vert / 3) * 3;
+          vertBox < Math.floor(vert / 3) * 3 + 3;
+          vertBox++
+        ) {
+          //vertBox er lik nummeret på det øverste i ruten, vert = 6,7 el 8 blir alle vertBox = 6
+          for (
+            var horiBox = Math.floor(hori / 3) * 3;
+            horiBox < Math.floor(hori / 3) * 3 + 3;
+            horiBox++
+          ) {
+            if (sudoku[vertBox][horiBox]) {
+              ikkeMulige[sudoku[vertBox][horiBox]] = true; //hvis den finner et tall i boksen skal det legges til som true i ikkeMulige
+            }
+          }
+        }
+        console.log(ikkeMulige);
+      }
+    }
+  }
+}
+
+sudokuLøser();
+
+//https://www.youtube.com/watch?v=kjPuNsu8nGs
