@@ -30,6 +30,10 @@ input:hover {
 }
 
 table {
+  transition: ease-in all 10s;
+}
+
+table {
   text-align: center;
   margin: 50px;
   font-size: 40px;
