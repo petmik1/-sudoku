@@ -76,20 +76,20 @@ regRad.onsubmit = function (evt) {
       nyttTall8,
       nyttTall9
     );
+    tall.push([
+      Number(inpTall1.value),
+      Number(inpTall2.value),
+      Number(inpTall3.value),
+      Number(inpTall4.value),
+      Number(inpTall5.value),
+      Number(inpTall6.value),
+      Number(inpTall7.value),
+      Number(inpTall8.value),
+      Number(inpTall9.value),
+    ]);
     arrTall.push(nyRad);
     visTall();
   }
-  tall.push([
-    Number(inpTall1.value),
-    Number(inpTall2.value),
-    Number(inpTall3.value),
-    Number(inpTall4.value),
-    Number(inpTall5.value),
-    Number(inpTall6.value),
-    Number(inpTall7.value),
-    Number(inpTall8.value),
-    Number(inpTall9.value),
-  ]);
 };
 console.log(Rad);
 
@@ -118,7 +118,7 @@ function sudokuLøser(sudoku) {
         for (var i = 0; i < 9; i++) {
           if (sudoku[vert][i] > 0) {
             //sjekker raden
-            ikkeMulige[sudoku[vert][hori]] = true; //hvis den finner et tall i raden skal det legges til som true i ikkeMulige
+            ikkeMulige[sudoku[vert][i]] = true; //hvis den finner et tall i raden skal det legges til som true i ikkeMulige
           }
           if (sudoku[i][hori] > 0) {
             //sjekker kolonnen
@@ -150,4 +150,12 @@ function sudokuLøser(sudoku) {
 
 sudokuLøser();
 
+function løstSudoku() {
+  // console.log(tall[1][2]);
+  for (var i = 0; i < 9; i++) {
+    for (var j = 0; j < 9; j++) {
+      console.log(tall[i][j]);
+    }
+  }
+}
 //https://www.youtube.com/watch?v=kjPuNsu8nGs
