@@ -96,40 +96,27 @@ regRad.onsubmit = function (evt) {
 
 var ikkeMulige = {};
 
-los.onclick = function (sudoku) {
+los.onclick = function () {
   var ikkeMulige = {},
     umuligeTall,
     tommeFelt = 81;
 
-  //test
-  var sudoku = [
-    [5, 3, 0, 0, 7, 0, 0, 0, 0],
-    [6, 0, 0, 1, 9, 5, 0, 0, 0],
-    [0, 9, 8, 0, 0, 0, 0, 6, 0],
-    [8, 0, 0, 0, 6, 0, 0, 0, 3],
-    [4, 0, 0, 8, 0, 3, 0, 0, 1],
-    [7, 0, 0, 0, 2, 0, 0, 0, 6],
-    [0, 6, 0, 0, 0, 0, 2, 8, 0],
-    [0, 0, 0, 4, 1, 9, 0, 0, 5],
-    [0, 0, 0, 0, 8, 0, 0, 7, 9],
-  ];
-
   while (tommeFelt > 0) {
     tommeFelt = 0;
-    for (var vert = 0; vert < sudoku.length; vert++) {
-      for (var hori = 0; hori < sudoku.length; hori++) {
-        //dobbel for-løkke som traverserer hele sudoku-arrayet
-        if (sudoku[vert][hori] === 0) {
+    for (var vert = 0; vert < tall.length; vert++) {
+      for (var hori = 0; hori < tall.length; hori++) {
+        //dobbel for-løkke som traverserer hele tall-arrayet
+        if (tall[vert][hori] === 0) {
           //hvis den finner en 0, skal den sjekke raden, kolonnen og boksen for det tallet
           ikkeMulige = {};
           for (var i = 0; i < 9; i++) {
-            if (sudoku[vert][i] > 0) {
+            if (tall[vert][i] > 0) {
               //sjekker raden
-              ikkeMulige[sudoku[vert][i]] = true; //hvis den finner et tall i raden skal det legges til som true i ikkeMulige
+              ikkeMulige[tall[vert][i]] = true; //hvis den finner et tall i raden skal det legges til som true i ikkeMulige
             }
-            if (sudoku[i][hori] > 0) {
+            if (tall[i][hori] > 0) {
               //sjekker kolonnen
-              ikkeMulige[sudoku[i][hori]] = true; //hvis den finner et tall i kolonnen skal det legges til som true i ikkeMulige
+              ikkeMulige[tall[i][hori]] = true; //hvis den finner et tall i kolonnen skal det legges til som true i ikkeMulige
             }
           }
           //sjekker så boksen
@@ -144,8 +131,8 @@ los.onclick = function (sudoku) {
               horiBox < Math.floor(hori / 3) * 3 + 3;
               horiBox++
             ) {
-              if (sudoku[vertBox][horiBox]) {
-                ikkeMulige[sudoku[vertBox][horiBox]] = true; //hvis den finner et tall i boksen skal det legges til som true i ikkeMulige
+              if (tall[vertBox][horiBox]) {
+                ikkeMulige[tall[vertBox][horiBox]] = true; //hvis den finner et tall i boksen skal det legges til som true i ikkeMulige
               }
             }
           }
@@ -155,7 +142,7 @@ los.onclick = function (sudoku) {
             for (var i = 1; i < 10; i++) {
               if (umuligeTall.indexOf(i.toString()) < 0) {
                 //indexOf returnerer -1 om tallet ikke finnes - sjekker altså om tallet finnes
-                sudoku[vert][hori] = i;
+                tall[vert][hori] = i;
               }
             }
           } else {
@@ -166,10 +153,10 @@ los.onclick = function (sudoku) {
     } //slutt for-løkke (vert)
   } //slutt while-loop
   var result = "<table>";
-  for (var i = 0; i < sudoku.length; i++) {
+  for (var i = 0; i < tall.length; i++) {
     result += "<tr>";
-    for (var j = 0; j < sudoku[i].length; j++) {
-      result += "<td>" + sudoku[i][j] + "</td>";
+    for (var j = 0; j < tall[i].length; j++) {
+      result += "<td>" + tall[i][j] + "</td>";
     }
     result += "</tr>";
   }
