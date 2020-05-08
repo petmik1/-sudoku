@@ -1,5 +1,7 @@
 var tblTall = document.getElementById("tblTall");
 var regRad = document.getElementById("regRad");
+var los = document.getElementById("los");
+var res = document.getElementById("res");
 
 var inpTall1 = document.getElementById("inpTall1");
 var inpTall2 = document.getElementById("inpTall2");
@@ -42,7 +44,7 @@ class Rad {
   }
 }
 
-var tall = [];
+var tall = []; // Global
 //lage en class for rad, en for kolonne og en for rute, og så lage en class for sudoku som bruker disse
 
 function visTall() {
@@ -91,11 +93,14 @@ regRad.onsubmit = function (evt) {
     visTall();
   }
 };
-console.log(Rad);
 
 var ikkeMulige = {};
 
-function sudokuLøser(sudoku) {
+los.onclick = function (sudoku) {
+  var ikkeMulige = {},
+    umuligeTall,
+    tommeFelt = 81;
+
   //test
   var sudoku = [
     [5, 3, 0, 0, 7, 0, 0, 0, 0],
@@ -109,53 +114,66 @@ function sudokuLøser(sudoku) {
     [0, 0, 0, 0, 8, 0, 0, 7, 9],
   ];
 
-  for (var vert = 0; vert < sudoku.length; vert++) {
-    for (var hori = 0; hori < sudoku.length; hori++) {
-      //dobbel for-løkke som traverserer hele sudoku-arrayet
-      if (sudoku[vert][hori] === 0) {
-        //hvis den finner en 0, skal den sjekke raden, kolonnen og boksen for det tallet
-        ikkeMulige = {};
-        for (var i = 0; i < 9; i++) {
-          if (sudoku[vert][i] > 0) {
-            //sjekker raden
-            ikkeMulige[sudoku[vert][i]] = true; //hvis den finner et tall i raden skal det legges til som true i ikkeMulige
-          }
-          if (sudoku[i][hori] > 0) {
-            //sjekker kolonnen
-            ikkeMulige[sudoku[i][hori]] = true; //hvis den finner et tall i kolonnen skal det legges til som true i ikkeMulige
-          }
-        }
-        //sjekker så boksen
-        for (
-          var vertBox = Math.floor(vert / 3) * 3;
-          vertBox < Math.floor(vert / 3) * 3 + 3;
-          vertBox++
-        ) {
-          //vertBox er lik nummeret på det øverste i ruten, vert = 6,7 el 8 blir alle vertBox = 6
-          for (
-            var horiBox = Math.floor(hori / 3) * 3;
-            horiBox < Math.floor(hori / 3) * 3 + 3;
-            horiBox++
-          ) {
-            if (sudoku[vertBox][horiBox]) {
-              ikkeMulige[sudoku[vertBox][horiBox]] = true; //hvis den finner et tall i boksen skal det legges til som true i ikkeMulige
+  while (tommeFelt > 0) {
+    tommeFelt = 0;
+    for (var vert = 0; vert < sudoku.length; vert++) {
+      for (var hori = 0; hori < sudoku.length; hori++) {
+        //dobbel for-løkke som traverserer hele sudoku-arrayet
+        if (sudoku[vert][hori] === 0) {
+          //hvis den finner en 0, skal den sjekke raden, kolonnen og boksen for det tallet
+          ikkeMulige = {};
+          for (var i = 0; i < 9; i++) {
+            if (sudoku[vert][i] > 0) {
+              //sjekker raden
+              ikkeMulige[sudoku[vert][i]] = true; //hvis den finner et tall i raden skal det legges til som true i ikkeMulige
+            }
+            if (sudoku[i][hori] > 0) {
+              //sjekker kolonnen
+              ikkeMulige[sudoku[i][hori]] = true; //hvis den finner et tall i kolonnen skal det legges til som true i ikkeMulige
             }
           }
-        }
-        console.log(ikkeMulige);
-      }
+          //sjekker så boksen
+          for (
+            var vertBox = Math.floor(vert / 3) * 3;
+            vertBox < Math.floor(vert / 3) * 3 + 3;
+            vertBox++
+          ) {
+            //vertBox er lik nummeret på det øverste i ruten, vert = 6,7 el 8 blir alle vertBox = 6
+            for (
+              var horiBox = Math.floor(hori / 3) * 3;
+              horiBox < Math.floor(hori / 3) * 3 + 3;
+              horiBox++
+            ) {
+              if (sudoku[vertBox][horiBox]) {
+                ikkeMulige[sudoku[vertBox][horiBox]] = true; //hvis den finner et tall i boksen skal det legges til som true i ikkeMulige
+              }
+            }
+          }
+          umuligeTall = Object.keys(ikkeMulige); //gjør om til array
+          if (umuligeTall.length === 8) {
+            //finner de rutene med bare én mulighet
+            for (var i = 1; i < 10; i++) {
+              if (umuligeTall.indexOf(i.toString()) < 0) {
+                //indexOf returnerer -1 om tallet ikke finnes - sjekker altså om tallet finnes
+                sudoku[vert][hori] = i;
+              }
+            }
+          } else {
+            tommeFelt++;
+          }
+        } //slutt stor if-løkke
+      } //slutt for-løkke (hori)
+    } //slutt for-løkke (vert)
+  } //slutt while-loop
+  var result = "<table>";
+  for (var i = 0; i < sudoku.length; i++) {
+    result += "<tr>";
+    for (var j = 0; j < sudoku[i].length; j++) {
+      result += "<td>" + sudoku[i][j] + "</td>";
     }
+    result += "</tr>";
   }
-}
+  result += "</table>";
 
-sudokuLøser();
-
-function løstSudoku() {
-  // console.log(tall[1][2]);
-  for (var i = 0; i < 9; i++) {
-    for (var j = 0; j < 9; j++) {
-      console.log(tall[i][j]);
-    }
-  }
-}
-//https://www.youtube.com/watch?v=kjPuNsu8nGs
+  res.innerHTML = result;
+};
