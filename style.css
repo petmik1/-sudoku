@@ -21,7 +21,7 @@ main {
 input {
   width: 30px;
   height: 20px;
-  transition: width 1s;
+  transition: all 1s;
 }
 input:hover {
   width: 60px;

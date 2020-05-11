@@ -45,7 +45,6 @@ class Rad {
 }
 
 var tall = []; // Global
-//lage en class for rad, en for kolonne og en for rute, og så lage en class for sudoku som bruker disse
 
 function visTall() {
   tblTall.innerHTML = "";
@@ -92,6 +91,7 @@ regRad.onsubmit = function (evt) {
     arrTall.push(nyRad);
     visTall();
   }
+  regRad.reset(); //setter alle inputene til value = 0 onsubmit
 };
 
 var ikkeMulige = {};
@@ -152,6 +152,13 @@ los.onclick = function () {
       } //slutt for-løkke (hori)
     } //slutt for-løkke (vert)
   } //slutt while-loop
+
+  /*if (tommeFelt > 100) {
+    alert("denne sudokuen er for vanskelig");
+  } else {
+    
+  }*/
+
   var result = "<table>";
   for (var i = 0; i < tall.length; i++) {
     result += "<tr>";
