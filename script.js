@@ -91,7 +91,9 @@ regRad.onsubmit = function (evt) {
     arrTall.push(nyRad);
     visTall();
   }
-  regRad.reset(); //setter alle inputene til value = 0 onsubmit
+  regRad.reset();
+
+  //setter alle inputene til value = 0 onsubmit
 };
 
 var ikkeMulige = {};
@@ -145,7 +147,17 @@ los.onclick = function () {
                 tall[vert][hori] = i;
               }
             }
-          } else {
+          }
+          // else if (umuligeTall === 7) { //setter inn det høyeste tallet av to mulige
+          //   for (var i = 1; i < 10; i++) {
+          //     if (umuligeTall.indexOf(i.toString()) < 0) {
+          //       //indexOf returnerer -1 om tallet ikke finnes - sjekker altså om tallet finnes
+          //       tall[vert][hori] = i;
+          //       //umuligeTall.push(i); //legger til det tallene som er mulig i arrayet umuligeTall
+          //     }
+          //   }
+          // }
+          else {
             tommeFelt++;
           }
         } //slutt stor if-løkke
